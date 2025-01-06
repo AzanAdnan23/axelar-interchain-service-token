@@ -5,13 +5,19 @@
 Clone the repository using the following link:
 
 ```bash
-git clone https://github.com/AzanAdnan23/axelar-canonical-interchain-token.git
+git clone https://github.com/AzanAdnan23/axelar-interchain-service-token.git
 ```
 
 ### 2. Create `.env` Files
 
-Create `.env` files:
-add your private key:
+Create two `.env` files:
+
+- One in the `/multichain-contract-with-its` directory
+- Another in the `/multichain-contract-with-its/token/` directory
+
+### 3. Add Private Key
+
+In both `.env` files, add your private key:
 
 ```
 PRIVATE_KEY=XXXXXXXXXXXXXXXXXXXXXXX
@@ -25,8 +31,45 @@ Run the following command from the `/multichain-contract-with-its` directory:
 npm install
 ```
 
-### AvaLache Token Address:
+### 5. Install Dependencies for the Token Contract
 
+Run the following command from the `/multichain-contract-with-its/token/` directory:
+
+```bash
+npm install
 ```
-0x85C5a12A3ae7F47314615a7d1c1Fd805c5E93935
+
+### 7. Test Scripts
+
+Use the following commands to test different scenarios:
+
+- **Deploy Token Manager and Add a Minter:**
+
+  ```bash
+  FUNCTION_NAME=deployTokenManagerAndAddAMinter npx hardhat run index.js --network avalanche
+  ```
+
+- **Mint and Approve:**
+
+  ```bash
+  FUNCTION_NAME=mintAndApproveITS npx hardhat run index.js --network avalanche
+  ```
+
+- **Deploy Token Manager Remotely:**
+
+  ```bash
+  FUNCTION_NAME=deployTokenManagerRemotely npx hardhat run index.js --network avalanche
+  ```
+
+- **Transfer Tokens:**
+  ```bash
+  FUNCTION_NAME=transferTokens npx hardhat run index.js --network avalanche
+  ```
+
+### 8. Transfer Tokens
+
+To transfer tokens, execute the following command:
+
+```bash
+FUNCTION_NAME=transferTokens npx hardhat run index.js --network avalanche
 ```
