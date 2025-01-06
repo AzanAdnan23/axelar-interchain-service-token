@@ -95,8 +95,8 @@ async function gasEstimator() {
     EvmChain.AVALANCHE,
     EvmChain.SEPOLIA,
     GasToken.AVAX,
-    10000000,
-    1.1
+    2000000,
+    1.2
   );
 
   return gas;
@@ -219,13 +219,15 @@ async function transferTokens() {
     signer
   );
   const gasAmount = await gasEstimator();
+  console.log("Estimated Gas Amount (wei):", gasAmount.toString());
+
   const transfer = await interchainTokenServiceContract.interchainTransfer(
     "0xb3ac857bab82af22f6f192b8e7c1ece738bfac77ec93b35397d03c9762f0dd07", // tokenId, the one you store in the earlier step
     "ethereum-sepolia",
     "0xa52482a9eEB7519e309A79D581c40030fb596CeF", // receiver address
-    ethers.utils.parseEther("99"), // amount of token to transfer
+    ethers.utils.parseEther("10"), // amount of token to transfer
     "0x",
-    ethers.utils.parseEther("2"), // gasValue
+    ethers.utils.parseEther("0.5"), // gasValue
     {
       // Transaction options should be passed here as an object
       value: gasAmount,
