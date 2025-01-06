@@ -208,7 +208,9 @@ async function transferMintAccessToTokenManagerOnSepolia() {
   // grantRoleTxn:  0x172bf3089061c4dd37fb9e670dbe3bcbb9bf112f87431e36f5d682c7b6d19e5b
 }
 
-// Transfer tokens : Avalanche -> Sepolia
+//...
+
+// Transfer tokens : Fantom -> Polygon
 async function transferTokens() {
   // Get a signer to sign the transaction
   const signer = await getSigner();
@@ -219,15 +221,13 @@ async function transferTokens() {
     signer
   );
   const gasAmount = await gasEstimator();
-  console.log("Estimated Gas Amount (wei):", gasAmount.toString());
-
   const transfer = await interchainTokenServiceContract.interchainTransfer(
     "0xb3ac857bab82af22f6f192b8e7c1ece738bfac77ec93b35397d03c9762f0dd07", // tokenId, the one you store in the earlier step
     "ethereum-sepolia",
-    "0xa52482a9eEB7519e309A79D581c40030fb596CeF", // receiver address
-    ethers.utils.parseEther("10"), // amount of token to transfer
+    "0x94fD63cA1282c4C645A6497a0aB32779604d1382", // receiver address
+    ethers.utils.parseEther("50"), // amount of token to transfer
     "0x",
-    ethers.utils.parseEther("0.5"), // gasValue
+    ethers.utils.parseEther("0.2"), // gasValue
     {
       // Transaction options should be passed here as an object
       value: gasAmount,
@@ -235,9 +235,9 @@ async function transferTokens() {
   );
 
   console.log("Transfer Transaction Hash:", transfer.hash);
-  //❯ FUNCTION_NAME=transferTokens npx hardhat run index.js --network avalanche
-  //Transfer Transaction Hash: 0x2835667bb17b68fd6f82dc457c2bc73889105b0b4a0464ce09d526299d5f6049
 }
+//❯ FUNCTION_NAME=transferTokens npx hardhat run index.js --network avalanche
+//Transfer Transaction Hash: 0x2835667bb17b68fd6f82dc457c2bc73889105b0b4a0464ce09d526299d5f6049
 async function main() {
   const functionName = process.env.FUNCTION_NAME;
   switch (functionName) {
