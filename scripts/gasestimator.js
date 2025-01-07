@@ -11,7 +11,7 @@ async function gasEstimator() {
   const gas = await api.estimateGasFee(
     EvmChain.AVALANCHE,
     EvmChain.BASE_SEPOLIA,
-    900000,
+    2000000,
     1.2,
     GasToken.AVAX,
     undefined,
