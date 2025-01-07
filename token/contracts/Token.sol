@@ -14,7 +14,7 @@ contract Token is ERC20, ERC20Burnable, AccessControl, ERC20Permit {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     constructor(address defaultAdmin, address minter)
-        ERC20("QuantiniumInterchainToken", "IQTI") // Set token name and symbol
+        ERC20("QuantiniumInterchainToken", "QTI") // Set token name and symbol
         ERC20Permit("QuantiniumInterchainToken") // Initialize ERC20Permit with the token name
     {
         // Mint an initial supply of tokens to the message sender
