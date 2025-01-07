@@ -4,6 +4,7 @@ const {
   EvmChain,
   GasToken,
 } = require("@axelar-network/axelarjs-sdk");
+const { BigNumber } = require("@ethersproject/bignumber");
 
 const api = new AxelarQueryAPI({ environment: Environment.TESTNET });
 
@@ -11,7 +12,7 @@ async function gasEstimator() {
   const gas = await api.estimateGasFee(
     EvmChain.AVALANCHE,
     EvmChain.BASE_SEPOLIA,
-    2000000,
+    BigNumber.from("3000000000"),
     1.2,
     GasToken.AVAX,
     undefined,
